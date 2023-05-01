@@ -8,11 +8,13 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.airbnb.lottie.LottieAnimationView
 import com.example.myapplication.R
+import com.example.myapplication.model.ManGroupsData
 
 class ManGroupsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_man_groups)
+//        Find views
 
         val imageView = findViewById<ImageView>(R.id.test_img)
 
@@ -24,34 +26,30 @@ class ManGroupsActivity : AppCompatActivity() {
         val btn3 = findViewById<Button>(R.id.third_btn)
         val btn4 = findViewById<Button>(R.id.fourth_btn)
 
-        val imgMap = mapOf(
-            "Hyungwon" to R.drawable.mx_heinvon_ready,
-            "I.M." to R.drawable.mx_im_ready,
-            "Joohoney" to R.drawable.mx_juhoni_ready,
-            "Minhyuk" to R.drawable.mx_minheik_ready,
-            "Kihyun" to R.drawable.mx_kihein_ready)
+//        List of answer buttons
         val btnArray = arrayOf(btn1, btn2, btn3, btn4)
-//        Счетчик правильных ответов
+//        Counter of right answers
         var rightCounter = 0
-//        Массив из которого выбираются значения для всех кнопок кроме правильной
-        var tempMap = imgMap.toMutableMap()
+//        temp map for filling buttons by text
+        var tempMap = ManGroupsData.dataMap.toMutableMap()
 
+//        Animation
         val correctAnswerLottie = findViewById<LottieAnimationView>(R.id.correct)
         correctAnswerLottie.visibility = View.INVISIBLE
 
         resetBtn.setOnClickListener {
-//            Изображение из базы
-            val pairNameAndImage = updateImage(imgMap)
-//            var image = pairNameAndImage.second
+//            Define pair of image and person on it
+            val pairNameAndImage = updateImage()
             val image = pairNameAndImage.second
-//            Ответ на вопрос
             val rightAnswer = pairNameAndImage.first
-//            Номер кнопки правильного ответа
+//            Define a button's number of right answer
             val rightAnswerId = (1..4).random()
 
             correctAnswerLottie.visibility = View.INVISIBLE
 
+//            setting image resource
             imageView.setImageResource(image)
+//            showing counter
             tv.text = rightCounter.toString()
 
             tempMap.remove(pairNameAndImage.first)
@@ -62,30 +60,24 @@ class ManGroupsActivity : AppCompatActivity() {
             when(rightAnswerId) {
                 1 -> {
                     btn1.text = rightAnswer
-
                     buttonTextFiller(btnArray, btn1, tempMap)
-
                 }
                 2 -> {
                     btn2.text = rightAnswer
-
                     buttonTextFiller(btnArray, btn2, tempMap)
-
                 }
                 3 -> {
                     btn3.text = rightAnswer
-
                     buttonTextFiller(btnArray, btn3, tempMap)
-
                 }
                 4 -> {
                     btn4.text = rightAnswer
-
                     buttonTextFiller(btnArray, btn4, tempMap)
-
                 }
             }
-            tempMap = imgMap.toMutableMap()
+            tempMap = ManGroupsData.dataMap.toMutableMap()
+
+//            setting onClick function to every button with variants of answer
             btn1.setOnClickListener(){
                 if (btn1.text == rightAnswer) {
                     correctAnswerLottie.visibility = View.VISIBLE
@@ -140,8 +132,8 @@ class ManGroupsActivity : AppCompatActivity() {
         }
     }
 
-    private fun updateImage(data: Map<String, Int>): Pair<String, Int> {
-        return data.toList().random()
+    private fun updateImage(): Pair<String, Int> {
+        return ManGroupsData.dataMap.toList().random()
     }
 
 }
