@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">K-POP</string>
+    <string name="game_rules">"Правила игры\nОпределить, кто изображен на картинке.\nза каждый правильный ответ вам начисляется балл"</string>
+</resources>
