@@ -21,10 +21,12 @@
         android:id="@+id/reset_btn"
         android:layout_width="wrap_content"
         android:layout_height="80dp"
-        android:text="RESET"
+        android:enabled="true"
+        android:text="@string/reset_btn"
         android:textSize="30sp"
         android:textStyle="italic"
         app:cornerRadius="20dp"
+        app:icon="@android:drawable/ic_popup_sync"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -48,38 +50,35 @@
         android:id="@+id/first_btn"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:onClick="userChoise"
+        android:layout_marginStart="5dp"
         app:cornerRadius="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/sec_btn"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/reset_btn"
-        app:layout_constraintHorizontal_bias="0.422"
+        app:layout_constraintHorizontal_bias="0.785"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/author_tv"
-        app:layout_constraintVertical_bias="0.388"
+        app:layout_constraintVertical_bias="0.326"
         app:toggleCheckedStateOnClick="false" />
 
     <Button
         android:id="@+id/sec_btn"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
         android:layout_marginBottom="52dp"
         app:cornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/reset_btn"
-        app:layout_constraintHorizontal_bias="0.355"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="@+id/first_btn" />
 
     <Button
         android:id="@+id/third_btn"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:layout_marginRight="5dp"
+        android:layout_marginEnd="5dp"
         app:cornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.644"
+        app:layout_constraintHorizontal_bias="0.736"
         app:layout_constraintStart_toEndOf="@+id/reset_btn"
         app:layout_constraintTop_toBottomOf="@+id/author_tv"
         app:layout_constraintVertical_bias="0.326" />
@@ -88,11 +87,10 @@
         android:id="@+id/fourth_btn"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
         android:layout_marginBottom="52dp"
         app:cornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/third_btn" />
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/correct"
@@ -103,8 +101,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/reset_btn"
-        app:lottie_autoPlay="true"
-        app:lottie_loop="true"
+        app:lottie_autoPlay="false"
+        app:lottie_loop="false"
         app:lottie_rawRes="@raw/correct" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

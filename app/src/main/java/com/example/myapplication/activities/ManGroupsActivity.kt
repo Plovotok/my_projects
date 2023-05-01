@@ -1,6 +1,5 @@
 package com.example.myapplication.activities
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -11,14 +10,13 @@ import com.airbnb.lottie.LottieAnimationView
 import com.example.myapplication.R
 
 class ManGroupsActivity : AppCompatActivity() {
-    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_man_groups)
 
         val imageView = findViewById<ImageView>(R.id.test_img)
 
-        val btnn = findViewById<Button>(R.id.reset_btn)
+        val resetBtn = findViewById<Button>(R.id.reset_btn)
         val tv = findViewById<TextView>(R.id.author_tv)
 
         val btn1 = findViewById<Button>(R.id.first_btn)
@@ -26,21 +24,6 @@ class ManGroupsActivity : AppCompatActivity() {
         val btn3 = findViewById<Button>(R.id.third_btn)
         val btn4 = findViewById<Button>(R.id.fourth_btn)
 
-
-        val imageList = arrayOf(
-            R.drawable.mx_heinvon_ready,
-            R.drawable.mx_im_ready,
-            R.drawable.mx_juhoni_ready,
-            R.drawable.mx_kihein_ready,
-            R.drawable.mx_minheik_ready
-        )
-        val imageAnswers = arrayOf(
-            "Hyungwon",
-            "I.M",
-            "Joohoney",
-            "Minhyuk",
-            "Kihyun"
-        )
         val imgMap = mapOf(
             "Hyungwon" to R.drawable.mx_heinvon_ready,
             "I.M." to R.drawable.mx_im_ready,
@@ -56,138 +39,109 @@ class ManGroupsActivity : AppCompatActivity() {
         val correctAnswerLottie = findViewById<LottieAnimationView>(R.id.correct)
         correctAnswerLottie.visibility = View.INVISIBLE
 
-
-        btnn.setOnClickListener {
+        resetBtn.setOnClickListener {
 //            Изображение из базы
-            val image = imageList.random()
+            val pairNameAndImage = updateImage(imgMap)
+//            var image = pairNameAndImage.second
+            val image = pairNameAndImage.second
 //            Ответ на вопрос
-            val imgID = imageList.indexOf(image)
+            val rightAnswer = pairNameAndImage.first
 //            Номер кнопки правильного ответа
             val rightAnswerId = (1..4).random()
-            var userAnswer = ""
-            var myCount1 = false
+
             correctAnswerLottie.visibility = View.INVISIBLE
 
             imageView.setImageResource(image)
             tv.text = rightCounter.toString()
-            tempMap.remove(getKey(tempMap, imgID))
+
+            tempMap.remove(pairNameAndImage.first)
             for (btn in btnArray) {
                 btn.isEnabled = true
             }
 
             when(rightAnswerId) {
                 1 -> {
-                    btn1.text = imageAnswers[imgID]
+                    btn1.text = rightAnswer
 
-                    for (btn in btnArray) {
-                        if (btn != btn1) {
-                            val randomName = (0 until tempMap.size).random()
-                            btn.text = getKey(tempMap, randomName)
-                            tempMap.remove(getKey(tempMap, randomName))
-                        }
-                    }
-                    btn1.setOnClickListener {
-                        userAnswer = btn1.text as String
-                        myCount1 = isUserChoiceRight(userAnswer, imageAnswers[imgID])
-                        if (myCount1){
-                            rightCounter++
-                            correctAnswerLottie.visibility = View.VISIBLE
-                        }
-                        for (btn in btnArray) {
-                            btn.isEnabled = false
-                        }
-                    }
-
-                    tempMap = imgMap.toMutableMap()
+                    buttonTextFiller(btnArray, btn1, tempMap)
 
                 }
                 2 -> {
-                    btn2.text = imageAnswers[imgID]
+                    btn2.text = rightAnswer
 
-                    for (btn in btnArray) {
-                        if (btn != btn2) {
-                            val randomName = (0 until tempMap.size).random()
-                            btn.text = getKey(tempMap, randomName)
-                            tempMap.remove(getKey(tempMap, randomName))
-                        }
-                    }
-                    btn2.setOnClickListener {
-                        userAnswer = btn2.text as String
-                        myCount1 = isUserChoiceRight(userAnswer, imageAnswers[imgID])
-                        if (myCount1){
-                            rightCounter++
-                            correctAnswerLottie.visibility = View.VISIBLE
-                        }
-                        for (btn in btnArray) {
-                            btn.isEnabled = false
-                        }
-                    }
-
-                    tempMap = imgMap.toMutableMap()
+                    buttonTextFiller(btnArray, btn2, tempMap)
 
                 }
                 3 -> {
-                    btn3.text = imageAnswers[imgID]
-                    for (btn in btnArray) {
-                        if (btn != btn3) {
-                            val randomName = (0 until tempMap.size).random()
-                            btn.text = getKey(tempMap, randomName)
-                            tempMap.remove(getKey(tempMap, randomName))
-                        }
-                    }
-                    btn3.setOnClickListener {
-                        userAnswer = btn3.text as String
-                        myCount1 = isUserChoiceRight(userAnswer, imageAnswers[imgID])
-                        if (myCount1){
-                            rightCounter++
-                            correctAnswerLottie.visibility = View.VISIBLE
-                        }
-                        for (btn in btnArray) {
-                            btn.isEnabled = false
-                        }
-                    }
+                    btn3.text = rightAnswer
 
-                    tempMap = imgMap.toMutableMap()
+                    buttonTextFiller(btnArray, btn3, tempMap)
 
                 }
                 4 -> {
-                    btn4.text = imageAnswers[imgID]
+                    btn4.text = rightAnswer
 
-                    for (btn in btnArray) {
-                        if (btn != btn4) {
-                            val randomName = (0 until tempMap.size).random()
-                            btn.text = getKey(tempMap, randomName)
-                            tempMap.remove(getKey(tempMap, randomName))
-                        }
-                    }
-                    btn4.setOnClickListener {
-                        userAnswer = btn4.text as String
-                        myCount1 = isUserChoiceRight(userAnswer, imageAnswers[imgID])
-                        if (myCount1){
-                            rightCounter++
-                            correctAnswerLottie.visibility = View.VISIBLE
-                        }
-                        for (btn in btnArray) {
-                            btn.isEnabled = false
-                        }
-                    }
+                    buttonTextFiller(btnArray, btn4, tempMap)
 
-                    tempMap = imgMap.toMutableMap()
-
+                }
+            }
+            tempMap = imgMap.toMutableMap()
+            btn1.setOnClickListener(){
+                if (btn1.text == rightAnswer) {
+                    correctAnswerLottie.visibility = View.VISIBLE
+                    correctAnswerLottie.playAnimation()
+                    rightCounter++
+                }
+                for (btn in btnArray) {
+                    btn.isEnabled = false
+                }
+            }
+            btn2.setOnClickListener(){
+                if (btn2.text == rightAnswer) {
+                    correctAnswerLottie.visibility = View.VISIBLE
+                    correctAnswerLottie.playAnimation()
+                    rightCounter++
+                }
+                for (btn in btnArray) {
+                    btn.isEnabled = false
+                }
+            }
+            btn3.setOnClickListener() {
+                if (btn3.text == rightAnswer) {
+                    correctAnswerLottie.visibility = View.VISIBLE
+                    correctAnswerLottie.playAnimation()
+                    rightCounter++
+                }
+                for (btn in btnArray) {
+                    btn.isEnabled = false
+                }
+            }
+            btn4.setOnClickListener(){
+                if (btn4.text == rightAnswer) {
+                    correctAnswerLottie.visibility = View.VISIBLE
+                    correctAnswerLottie.playAnimation()
+                    rightCounter++
+                }
+                for (btn in btnArray) {
+                    btn.isEnabled = false
                 }
             }
 
         }
-
-
     }
 
-
-private fun isUserChoiceRight(userAnswer: String, rightAnswer: String):Boolean {
-        return userAnswer == rightAnswer
+    private fun buttonTextFiller(btnArray: Array<Button>, excButton: Button, data: Map<String, Int>){
+        val tempMap = data.toMutableMap()
+        for (btn in btnArray){
+            if (btn != excButton){
+                btn.text = tempMap.toList().random().first
+                tempMap.remove(btn.text)
+            }
+        }
     }
 
-    private fun getKey(array: Map<String, Int>, index: Int): String {
-        return array.keys.toList().get(index)
+    private fun updateImage(data: Map<String, Int>): Pair<String, Int> {
+        return data.toList().random()
     }
+
 }
