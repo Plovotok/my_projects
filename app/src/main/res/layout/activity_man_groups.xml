@@ -52,6 +52,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         app:cornerRadius="20dp"
+        android:text=""
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/reset_btn"
         app:layout_constraintHorizontal_bias="0.785"
@@ -66,6 +67,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="52dp"
         app:cornerRadius="20dp"
+        android:text=""
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/reset_btn"
         app:layout_constraintStart_toStartOf="@+id/first_btn" />
@@ -76,6 +78,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="5dp"
         app:cornerRadius="20dp"
+        android:text=""
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.736"
@@ -89,6 +92,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="52dp"
         app:cornerRadius="20dp"
+        android:text=""
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/third_btn" />
 

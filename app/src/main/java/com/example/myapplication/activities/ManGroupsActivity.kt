@@ -48,7 +48,7 @@ class ManGroupsActivity : AppCompatActivity() {
 //            Define a button's number of right answer
             val rightAnswerId = (1..4).random()
 
-            btnHelp.setOnClickListener{
+            btnHelp.setOnClickListener {
                 Toast.makeText(this, rightAnswer, Toast.LENGTH_SHORT).show()
             }
 
