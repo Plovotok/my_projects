@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.airbnb.lottie.LottieAnimationView
 import com.example.myapplication.R
@@ -26,6 +27,8 @@ class ManGroupsActivity : AppCompatActivity() {
         val btn3 = findViewById<Button>(R.id.third_btn)
         val btn4 = findViewById<Button>(R.id.fourth_btn)
 
+        val btnHelp = findViewById<Button>(R.id.btn_help)
+
 //        List of answer buttons
         val btnArray = arrayOf(btn1, btn2, btn3, btn4)
 //        Counter of right answers
@@ -44,6 +47,10 @@ class ManGroupsActivity : AppCompatActivity() {
             val rightAnswer = pairNameAndImage.first
 //            Define a button's number of right answer
             val rightAnswerId = (1..4).random()
+
+            btnHelp.setOnClickListener{
+                Toast.makeText(this, rightAnswer, Toast.LENGTH_SHORT).show()
+            }
 
             correctAnswerLottie.visibility = View.INVISIBLE
 
