@@ -38,7 +38,9 @@ class ManGroupsActivity : AppCompatActivity() {
 
 //        Animation
         val correctAnswerLottie = findViewById<LottieAnimationView>(R.id.correct)
+        val wrongAnswerLottie = findViewById<LottieAnimationView>(R.id.wrong)
         correctAnswerLottie.visibility = View.INVISIBLE
+        wrongAnswerLottie.visibility = View.INVISIBLE
 
         resetBtn.setOnClickListener {
 //            Define pair of image and person on it
@@ -53,6 +55,7 @@ class ManGroupsActivity : AppCompatActivity() {
             }
 
             correctAnswerLottie.visibility = View.INVISIBLE
+            wrongAnswerLottie.visibility = View.INVISIBLE
 
 //            setting image resource
             imageView.setImageResource(image)
@@ -90,6 +93,9 @@ class ManGroupsActivity : AppCompatActivity() {
                     correctAnswerLottie.visibility = View.VISIBLE
                     correctAnswerLottie.playAnimation()
                     rightCounter++
+                } else {
+                    wrongAnswerLottie.visibility = View.VISIBLE
+                    wrongAnswerLottie.playAnimation()
                 }
                 for (btn in btnArray) {
                     btn.isEnabled = false
@@ -100,6 +106,9 @@ class ManGroupsActivity : AppCompatActivity() {
                     correctAnswerLottie.visibility = View.VISIBLE
                     correctAnswerLottie.playAnimation()
                     rightCounter++
+                } else {
+                    wrongAnswerLottie.visibility = View.VISIBLE
+                    wrongAnswerLottie.playAnimation()
                 }
                 for (btn in btnArray) {
                     btn.isEnabled = false
@@ -110,6 +119,9 @@ class ManGroupsActivity : AppCompatActivity() {
                     correctAnswerLottie.visibility = View.VISIBLE
                     correctAnswerLottie.playAnimation()
                     rightCounter++
+                } else {
+                    wrongAnswerLottie.visibility = View.VISIBLE
+                    wrongAnswerLottie.playAnimation()
                 }
                 for (btn in btnArray) {
                     btn.isEnabled = false
@@ -120,6 +132,9 @@ class ManGroupsActivity : AppCompatActivity() {
                     correctAnswerLottie.visibility = View.VISIBLE
                     correctAnswerLottie.playAnimation()
                     rightCounter++
+                } else {
+                    wrongAnswerLottie.visibility = View.VISIBLE
+                    wrongAnswerLottie.playAnimation()
                 }
                 for (btn in btnArray) {
                     btn.isEnabled = false
