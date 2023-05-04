@@ -39,7 +39,17 @@ class ManGroupsData() {
             "Seongwa" to R.drawable.atz_seongwa,
             "Wooyoung" to R.drawable.atz_wooyoung,
             "Yeosang" to R.drawable.atz_yeosang,
-            "Yunho" to R.drawable.atz_yunho
+            "Yunho" to R.drawable.atz_yunho,
+
+            "Doyong" to R.drawable.nct_doyong,
+            "Haechan" to R.drawable.nct_haechan,
+            "Johnny" to R.drawable.nct_johnny,
+            "Jungwoo" to R.drawable.nct_jungwoo,
+            "Mark" to R.drawable.nct_mark,
+            "Taeil" to R.drawable.nct_taeil,
+            "Taeyong" to R.drawable.nct_taeyong,
+            "Winwin" to R.drawable.nct_winwin,
+            "Yuta" to R.drawable.nct_yuta,
 
             )
     }

@@ -4,4 +4,5 @@
     <string name="reset_btn">ЕЩЕ</string>
     <string name="btn_help">Подсказка</string>
     <string name="participant_image">participiant\'s image</string>
+    <string name="rules">Правила</string>
 </resources>
