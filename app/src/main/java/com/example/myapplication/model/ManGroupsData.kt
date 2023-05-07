@@ -6,12 +6,12 @@ class ManGroupsData() {
     companion object{
         val dataMap = mapOf(
 
-            "Jey Houp" to R.drawable.bts_jey_houp,
+            "J-Hope" to R.drawable.bts_jey_houp,
             "Jimin" to R.drawable.bts_jimin,
             "Jin" to R.drawable.bts_jin,
-            "Jonguk" to R.drawable.bts_jongik,
+            "JungKook" to R.drawable.bts_jongik,
             "RM" to R.drawable.bts_rm,
-            "Shuga" to R.drawable.bts_shuga,
+            "Suga" to R.drawable.bts_shuga,
             "V" to R.drawable.bts_v,
 
             "Huyngwon" to R.drawable.mx_hyungwon,
@@ -41,6 +41,7 @@ class ManGroupsData() {
             "Yeosang" to R.drawable.atz_yeosang,
             "Yunho" to R.drawable.atz_yunho,
 
+//            NCT 127
             "Doyong" to R.drawable.nct_doyong,
             "Haechan" to R.drawable.nct_haechan,
             "Johnny" to R.drawable.nct_johnny,
